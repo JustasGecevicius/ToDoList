@@ -1,5 +1,5 @@
 import { clearMainDiv } from "./basicFunctions/clearMainDiv";
-import {project} from "./inputFields/projectInputFieldControls";
+import {projects} from "./inputFields/projectInputFieldControls";
 import {inputTask} from "./inputFields/taskInputField";
 import {checkDivDate} from "./basicFunctions/checkDivDate";
 import {Task} from "./taskObjectConstructor"
@@ -25,9 +25,9 @@ let openProject = (clickEvent) => {
     placementDiv.appendChild(openTaskInputButton);
     placementDiv.appendChild(allTasksDiv);
 
-   if((project[clickEvent.target.innerHTML]).length != 0)
+   if((projects[clickEvent.target.innerHTML]).length != 0)
    {
-        checkDivDate(project[clickEvent.target.innerHTML], allTasksDiv);    
+        checkDivDate(projects[clickEvent.target.innerHTML], allTasksDiv);    
    }
 
    else {console.log("no tasks")};
@@ -45,12 +45,12 @@ let openProject = (clickEvent) => {
         const taskInputField = document.querySelector(".addTask");
         const bigDiv = document.querySelector(".allTasksDiv");
         let newTask = new Task(dateInput.value, taskInput.value);
-        project[event.target.classList[1]].push(newTask);
+        projects[event.target.classList[1]].push(newTask);
         background.classList.remove("active");
         taskInputField.classList.remove("active");
         dateInput.value = "";
         taskInput.value = "";
-        checkDivDate(project[event.target.classList[1]], bigDiv);
+        checkDivDate(projects[event.target.classList[1]], bigDiv);
     });
     
 }

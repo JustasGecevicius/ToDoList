@@ -1,7 +1,7 @@
 import { checkDivDate } from "../basicFunctions/checkDivDate";
 import { openProject } from "../openProject";
 import { Task } from "../taskObjectConstructor";
-import {project} from "./projectInputFieldControls";
+import {projects} from "./projectInputFieldControls";
 
 let inputTask = (projectName) => {
 
@@ -20,12 +20,12 @@ let inputTask = (projectName) => {
         const taskInputField = document.querySelector(".addTask");
         const bigDiv = document.querySelector(".allTasksDiv");
         let newTask = new Task(dateInput.value, taskInput.value);
-        project[event.target.classList[1]].push(newTask);
+        projects[event.target.classList[1]].push(newTask);
         background.classList.remove("active");
         taskInputField.classList.remove("active");
         dateInput.value = "";
         taskInput.value = "";
-        checkDivDate(project[event.target.classList[1]], bigDiv);
+        checkDivDate(projects[event.target.classList[1]], bigDiv);
     }
     addTaskButton.addEventListener("click", eventListener);
 }

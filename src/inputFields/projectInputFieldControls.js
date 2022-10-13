@@ -1,7 +1,7 @@
 import {displayProjects} from "../displayProjects";
 
-let project = 
-{ projectName1: [{date: "2022-10-09", task: "task"},{date: "2022-10-09", task: "task5"}, {date: "2022-09-10", task: "task2"}], 
+let projects = 
+{ projectName1: [{date: "2022-10-10", task: "task"},{date: "2022-10-09", task: "task5"}, {date: "2022-09-10", task: "task2"}], 
 projectName2: [{date: "date3", task: "task3"}, {date: "date4", task: "task4"}]
 };
 
@@ -20,8 +20,8 @@ projectSubmitButton.addEventListener("click", () => {
 })
 }
 
-let createProjectArray = (projectName) => {
-    project[projectName] = [];
+let createProjectArray = (project) => {
+    projects[project] = [];
 }
 
-export {inputProject, createProjectArray, project};
+export {inputProject, createProjectArray, projects};

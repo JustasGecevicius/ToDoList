@@ -1,4 +1,4 @@
-import {project} from "./inputFields/projectInputFieldControls";
+import {projects} from "./inputFields/projectInputFieldControls";
 import {openProject} from "./openProject";
 
 let displayProjects = () => {
@@ -6,7 +6,7 @@ let displayProjects = () => {
     while(navProjectDisplay.firstChild){
         navProjectDisplay.firstChild.remove();
     }
-    for (let keys in project) {        
+    for (let keys in projects) {        
         const p = document.createElement("p");
         p.innerHTML = keys;
         navProjectDisplay.appendChild(p);

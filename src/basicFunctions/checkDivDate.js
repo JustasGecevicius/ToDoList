@@ -1,11 +1,11 @@
 import {find} from "lodash";
 
-let checkDivDate = (tasks, taskContainer) => {
-    (() => {
+let checkDivDate = (tasks, taskContainer, deactivateTaskDeletion) => {
+    if(deactivateTaskDeletion){
         while(taskContainer.firstChild){
             taskContainer.firstChild.remove();
         }
-    })();
+    }
     console.log("checkDivDate");
     let newArray;
     const tasksArray = [...tasks];

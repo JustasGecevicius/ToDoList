@@ -1,5 +1,6 @@
+import { checkDivDate } from "../basicFunctions/checkDivDate";
 import { clearMainDiv } from "../basicFunctions/clearMainDiv";
-import {project} from "../inputFields/projectInputFieldControls";
+import {projects} from "../inputFields/projectInputFieldControls";
 
 let today = () => {
     clearMainDiv("today");
@@ -14,24 +15,20 @@ let today = () => {
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
     // This arrangement can be altered based on how we want the date's format to appear.
-    let currentDate = `${year}-${month}-0${day}`;
+    let currentDate = `${year}-${month}-${day}`;
+    let arrayOfTodaysTasks = [];
 
-    console.log(currentDate);
+    //console.log(currentDate);
 
-    for (let x in project){
-        for(let y of project[x]){
-            if(y.date == currentDate)
+    for (let project in projects){
+        for(let task of projects[project]){
+            if(task.date == currentDate)
             {
-            const div = document.createElement("div");
-            div.classList.add(y.date);
-            const h4 = document.createElement("h4");
-            const p = document.createElement("p");
-            h4.innerHTML = y.date;
-            p.innerHTML = y.task;
-            div.append(h4, p);
-            placementDiv.appendChild(div);
+                arrayOfTodaysTasks.push(task);            
             }
         }
     }
+    console.log(arrayOfTodaysTasks);
+    checkDivDate(arrayOfTodaysTasks, tasksDiv);
 }
 export {today};
