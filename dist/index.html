@@ -24,10 +24,11 @@
                 <li class="thisWeek"><button id="thisWeek">This Week</button></li>
             </ul>
             <h2 class="projects">Projects</h2>
-            <button class="addProjectButton">+ Add Project</button>
             <div class="navProjectDisplay">
                 
             </div>
+            <button class="addProjectButton">+ Add Project</button>
+            
         </nav>
         <div class="placementDiv">
             
@@ -38,9 +39,15 @@
         <img src="../Images/Asset 2.svg" alt="githubLogo" class="githubLogo">
     </footer>
     <div class="addProject">
-        <input type="text" class="projectName" placeholder="Type a project name!">
+        <input type="text" class="projectName" placeholder="Type a project name!" required>
         <button class="submitProject">Submit</button>
     </div>
+    <div class="addTask">
+        <input type="date" class="date" required>
+        <input type="text" class="taskInput" placeholder="Type in the Task!" required>
+        <button class="submitTask">Submit</button>
+    </div>
     <div class="background"></div>
+
 </body>
 </html>

@@ -1,4 +1,9 @@
 import {allTasks} from "./allTasks";
+import {today} from "./today";
+import {thisWeek} from "./thisWeek";
+import { clearMainDiv } from "../basicFunctions/clearMainDiv";
+
+
 
 let createMainPage = () => {
     const addProjectbutton = document.querySelector(".addProjectButton");
@@ -25,8 +30,8 @@ let createMainPage = () => {
     addProjectbutton.addEventListener("click", () => {
         background.classList.add("active");
         projectInputDiv.classList.add("active");
-
     })
+
 
     allTasksButton.addEventListener("click", () => {
         allTasks();
@@ -38,13 +43,7 @@ let createMainPage = () => {
         thisWeek();
     })
     homeButton.addEventListener("click", () => {
-        if(placementDiv.classList[1] != "welcome")
-        {
-            while(placementDiv.firstChild){
-                placementDiv.firstChild.remove();
-            }
-            placementDiv.classList.remove(placementDiv.classList[1]);
-            placementDiv.classList.add("welcome");
+        clearMainDiv("welcome");
         const mainDiv = document.createElement("div");
         const h1 = document.createElement("h1");
         const p = document.createElement("p");
@@ -52,12 +51,8 @@ let createMainPage = () => {
         p.innerHTML = "This is the place where all tasks come together";
         mainDiv.appendChild(h1);
         mainDiv.appendChild(p);
-        placementDiv.appendChild(mainDiv);
-        }
-        else console.log("be reikalo");
+        placementDiv.appendChild(mainDiv);        
     })
-
 };
-
 export {createMainPage}
 
