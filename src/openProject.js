@@ -2,6 +2,7 @@ import { clearMainDiv } from "./basicFunctions/clearMainDiv";
 import {project} from "./inputFields/projectInputFieldControls";
 import {inputTask} from "./inputFields/taskInputField";
 import {checkDivDate} from "./basicFunctions/checkDivDate";
+import {Task} from "./taskObjectConstructor"
 
 let openProject = (clickEvent) => {
     clearMainDiv("project");
@@ -10,35 +11,47 @@ let openProject = (clickEvent) => {
     const background = document.querySelector(".background");
     const allTasksDiv = document.createElement("div");
     const projectName = document.createElement("h2");
-    const addTaskButton = document.createElement("button");
+    const openTaskInputButton = document.createElement("button");
     const submitTaskButton = document.querySelector(".submitTask");
-    let taskHolderDivs;
 
     allTasksDiv.classList.add("allTasksDiv");
     projectName.innerHTML = clickEvent.target.innerHTML;
-    addTaskButton.classList.add("addTaskButton");
+    openTaskInputButton.classList.add("openTaskInputButton");
+    submitTaskButton.classList.remove(submitTaskButton.classList[1]);
     submitTaskButton.classList.add(clickEvent.target.innerHTML);
-    addTaskButton.innerHTML = "Add a Task";
+    openTaskInputButton.innerHTML = "Add a Task";
 
     placementDiv.appendChild(projectName);
-    placementDiv.appendChild(addTaskButton);
+    placementDiv.appendChild(openTaskInputButton);
     placementDiv.appendChild(allTasksDiv);
 
    if((project[clickEvent.target.innerHTML]).length != 0)
    {
-    for (let task of project[clickEvent.target.innerHTML]){
-
-        taskHolderDivs = allTasksDiv.querySelectorAll("div");
-        checkDivDate(taskHolderDivs, task, allTasksDiv);
-    }
+        checkDivDate(project[clickEvent.target.innerHTML], allTasksDiv);    
    }
+
    else {console.log("no tasks")};
 
-    addTaskButton.addEventListener("click", () => {
+    openTaskInputButton.addEventListener("click", () => {
         addTaskField.classList.add("active");
         background.classList.add("active");
-        inputTask(clickEvent.target.innerHTML);
 })
+
+    submitTaskButton.addEventListener("click", (event) => {
+        console.log("button pressed");
+        const taskInput = document.querySelector(".taskInput");
+        const dateInput = document.querySelector(".date");
+        const background = document.querySelector(".background");
+        const taskInputField = document.querySelector(".addTask");
+        const bigDiv = document.querySelector(".allTasksDiv");
+        let newTask = new Task(dateInput.value, taskInput.value);
+        project[event.target.classList[1]].push(newTask);
+        background.classList.remove("active");
+        taskInputField.classList.remove("active");
+        dateInput.value = "";
+        taskInput.value = "";
+        checkDivDate(project[event.target.classList[1]], bigDiv);
+    });
     
 }
 

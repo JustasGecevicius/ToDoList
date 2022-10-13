@@ -1,4 +1,4 @@
-import { checkDivDate } from "../basicFunctions/checkDivDate";
+//import { checkDivDate } from "../basicFunctions/checkDivDate";
 import { clearMainDiv } from "../basicFunctions/clearMainDiv";
 import {project} from "../inputFields/projectInputFieldControls";
 

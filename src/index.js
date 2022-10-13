@@ -8,5 +8,4 @@ createMainPage();
 if(storageAvailable("localStorage"))
 {
 inputProject();
-inputTask();
 }
