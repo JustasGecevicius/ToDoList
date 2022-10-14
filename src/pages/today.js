@@ -1,6 +1,6 @@
 import { checkDivDate } from "../basicFunctions/checkDivDate";
 import { clearMainDiv } from "../basicFunctions/clearMainDiv";
-import {projects} from "../inputFields/projectInputFieldControls";
+import {projects} from "../objects/projectsObject";
 
 let today = () => {
     clearMainDiv("today");
@@ -28,7 +28,7 @@ let today = () => {
             }
         }
     }
-    console.log(arrayOfTodaysTasks);
+    //console.log(arrayOfTodaysTasks);
     checkDivDate(arrayOfTodaysTasks, tasksDiv);
 }
 export {today};

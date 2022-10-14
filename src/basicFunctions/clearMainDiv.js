@@ -24,7 +24,6 @@ let clearMainDiv = (openTab) => {
             break;    
     }
 }
-//console.log(placementDiv);
 }
 
 export {clearMainDiv};

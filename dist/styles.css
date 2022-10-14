@@ -17,6 +17,9 @@ body {
   min-height: 6rem;
   max-height: 6rem;
 }
+.header .websiteName:hover {
+  cursor: pointer;
+}
 .header .companyLogo {
   width: 5rem;
   margin: 0 3rem;
@@ -42,12 +45,8 @@ body {
 .mainDisplayWrapper .navigation ul {
   list-style: none;
 }
-.mainDisplayWrapper .navigation h2 {
-  margin-top: 5rem;
-  letter-spacing: 2px;
-  font-size: 2rem;
-}
-.mainDisplayWrapper .navigation button {
+.mainDisplayWrapper .navigation ul li button {
+  text-align: center;
   font-weight: 700;
   font-size: 1rem;
   letter-spacing: 2px;
@@ -55,25 +54,72 @@ body {
   margin-top: 1rem;
   background-color: #023E8A;
   border: rgba(202, 240, 248, 0.5411764706);
-  min-width: 10rem;
-  width: 100%;
-  padding: 0.3rem 0.5rem;
+  min-width: 7rem;
+  padding: 0.3rem 0rem;
 }
-.mainDisplayWrapper .navigation button:hover {
+.mainDisplayWrapper .navigation ul li button:hover {
   cursor: pointer;
+  border-bottom: 2px solid white;
+}
+.mainDisplayWrapper .navigation h2 {
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  font-size: 2rem;
+}
+.mainDisplayWrapper .navigation .addProjectButton {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: white;
+  margin-top: 1rem;
+  background-color: #023E8A;
+  border: rgba(202, 240, 248, 0.5411764706);
+  min-width: 9rem;
+  padding: 0.3rem 0rem;
+}
+.mainDisplayWrapper .navigation .addProjectButton:hover {
+  cursor: pointer;
+  border-bottom: 2px solid white;
+}
+.mainDisplayWrapper .navigation .navProjectDisplay p:hover {
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid white;
 }
 
 .placementDiv {
   width: 100%;
   padding: 3rem;
 }
+.placementDiv h2 {
+  margin-bottom: 2rem;
+}
+.placementDiv .openTaskInputButton {
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: black;
+  margin: 1rem 0;
+  background-color: rgba(202, 240, 248, 0.5411764706);
+  border: 1px solid black;
+  min-width: 7rem;
+  padding: 0.3rem 0rem;
+  border-radius: 5px;
+}
+.placementDiv .openTaskInputButton:hover {
+  border: 2px solid black;
+  cursor: pointer;
+}
 
-.placementDiv.welcome {
+.welcome {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.placementDiv.welcome div {
+.welcome div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,10 +127,6 @@ body {
   color: #03045e;
   letter-spacing: 2px;
   font-style: italic;
-}
-
-.websiteName:hover {
-  cursor: pointer;
 }
 
 .footer {
@@ -142,10 +184,6 @@ body {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-}
-
-.navProjectDisplay p:hover {
-  cursor: pointer;
 }
 
 .addTask {

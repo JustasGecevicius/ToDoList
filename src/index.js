@@ -1,11 +1,17 @@
 import {createMainPage} from "./pages/welcomePage";
-import {inputProject} from "./inputFields/projectInputFieldControls";
+import {inputProject, projects} from "./objects/projectsObject";
 import {storageAvailable} from "./basicFunctions/checkIfStorageAvailable";
-import { inputTask } from "./inputFields/taskInputField";
+import { displayProjectsCorrect } from "./basicFunctions/displayProjects";
+import { buttonListeners } from "./basicFunctions/buttonListeners";
+import { updateLocalStorage } from "./basicFunctions/updateStorage";
+
+const projectDisplayDiv = document.querySelector(".navProjectDisplay"); 
 
 createMainPage();
 
 if(storageAvailable("localStorage"))
 {
-inputProject();
+// updateLocalStorage();
+displayProjectsCorrect(Object.keys(projects), projectDisplayDiv);
+buttonListeners();
 }

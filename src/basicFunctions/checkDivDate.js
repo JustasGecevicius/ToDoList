@@ -1,35 +1,39 @@
+import { isBefore, parseISO, toDate } from "date-fns";
 import {find} from "lodash";
 
-let checkDivDate = (tasks, taskContainer, deactivateTaskDeletion) => {
-    if(deactivateTaskDeletion){
-        while(taskContainer.firstChild){
-            taskContainer.firstChild.remove();
-        }
+let checkDivDate = (tasks, tasksContainer) => {
+    //console.log(tasksContainer);
+    while(tasksContainer.firstChild){
+        tasksContainer.firstChild.remove();
     }
-    console.log("checkDivDate");
-    let newArray;
+    //console.log("checkDivDate");
+    let displayedTaskDivs;
     const tasksArray = [...tasks];
 
+    tasksArray.sort((task1, task2) => {
+        let task1Correct = toDate(parseISO(task1.date));
+        let task2Correct = toDate(parseISO(task2.date));
+        return isBefore(task2Correct, task1Correct) ? 1 : -1 ;
+    });
     tasksArray.forEach(task => {
-        newArray = taskContainer.querySelectorAll("div");
-        const div = find(newArray, (o) => o.classList == task.date);
-        //console.log(div);
+        //console.log(task);
+        displayedTaskDivs = tasksContainer.querySelectorAll("div");
+        const div = find(displayedTaskDivs, (o) => o.classList == task.date);
         if(div){
             const p = document.createElement("p");
             p.innerHTML = task.task;
             div.append(p);
-            //console.log(task, "new");
        }
        else{
+            //console.log(task);
            const div = document.createElement("div");
            const h4 = document.createElement("h4");
            const p = document.createElement("p");
-           //console.log(task);
            div.classList.add(task.date);            
            h4.innerHTML = task.date;
            p.innerHTML = task.task;
            div.append(h4, p);
-           taskContainer.appendChild(div);
+           tasksContainer.appendChild(div);
        }
      })
     return; 
