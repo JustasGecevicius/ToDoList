@@ -109,18 +109,19 @@ body{
     h2{
         margin-bottom: 2rem;
     }
-    .openTaskInputButton{  
+    button{  
         text-align: center;
         font-weight: 700;
         font-size: 0.8rem;
         letter-spacing: 2px;
         color: black;
-        margin: 1rem 0;
+        margin-bottom: 1rem;
         background-color: $button-color;
         border: 1px solid black;
         min-width: 7rem;
-        padding: 0.3rem 0rem;
+        padding: 0.3rem 0.5rem;
         border-radius: 5px;
+        margin-right: 2rem;
         &:hover{
             border: 2px solid black;
             cursor: pointer;
@@ -226,5 +227,31 @@ body{
     }
 }
 .addTask.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.removeOrHighlightTask{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: white;
+    padding: 5rem;
+    z-index: 10;
+    border-radius: 20px;
+    button{
+        border-radius: 5px;
+        padding: 0.5rem;
+        border: none;
+        &:hover{
+            cursor: pointer;
+        }
+}
+}
+
+.removeOrHighlightTask.active{
     transform: translate(-50%, -50%) scale(1);
 }

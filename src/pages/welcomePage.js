@@ -6,6 +6,7 @@ import { clearMainDiv } from "../basicFunctions/clearMainDiv";
 
 
 let createMainPage = () => {
+    clearMainDiv("welcome");
     const addProjectbutton = document.querySelector(".addProjectButton");
     const allTasksButton = document.querySelector("#allTasks");
     const todayButton = document.querySelector("#today");
@@ -20,7 +21,6 @@ let createMainPage = () => {
     const h1 = document.createElement("h1");
     const p = document.createElement("p");
 
-    placementDiv.classList.add("welcome");
     h1.innerHTML = "Welcome to the ToDo List";
     p.innerHTML = "This is the place where all tasks come together";
     mainDiv.appendChild(h1);

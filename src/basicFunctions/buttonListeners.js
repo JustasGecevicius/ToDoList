@@ -24,6 +24,7 @@ let buttonListeners = () => {
         const taskInputField = document.querySelector(".addTask");
         const tasksContainer = document.querySelector(".tasksContainer");
         let newTask = new Task(dateInput.value, taskInput.value);
+        console.log(event.target.classList);
         projects[event.target.classList[1]].push(newTask);
         updateLocalStorage(projects);
         background.classList.remove("active");
