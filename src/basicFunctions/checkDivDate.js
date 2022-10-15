@@ -2,7 +2,11 @@ import { isBefore, parseISO, toDate } from "date-fns";
 import {find} from "lodash";
 
 let checkDivDate = (tasks, tasksContainer) => {
-    //console.log(tasksContainer);
+    const background = document.querySelector(".background");
+    const removeOrHighlightField = document.querySelector(".removeOrHighlightTask");
+    const removeTaskButton = document.querySelector(".removeTask");
+    const highlightButton = document.querySelector(".highlight");
+
     while(tasksContainer.firstChild){
         tasksContainer.firstChild.remove();
     }
@@ -21,6 +25,11 @@ let checkDivDate = (tasks, tasksContainer) => {
         const div = find(displayedTaskDivs, (o) => o.classList == task.date);
         if(div){
             const p = document.createElement("p");
+            p.addEventListener("click", () => {
+                background.classList.add("active");
+                removeOrHighlightField.classList.add("active");
+                p.classList.add("remove/highlight");
+            })
             p.innerHTML = task.task;
             div.append(p);
        }
@@ -29,6 +38,11 @@ let checkDivDate = (tasks, tasksContainer) => {
            const div = document.createElement("div");
            const h4 = document.createElement("h4");
            const p = document.createElement("p");
+           p.addEventListener("click", () => {
+            background.classList.add("active");
+            removeOrHighlightField.classList.add("active");
+            p.classList.add("remove/highlight");
+        })
            div.classList.add(task.date);            
            h4.innerHTML = task.date;
            p.innerHTML = task.task;

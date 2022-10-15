@@ -3,6 +3,7 @@ import { displayProjectsCorrect } from "./displayProjects";
 import { projects } from "../objects/projectsObject";
 import { Task } from "../objects/taskObjectConstructor";
 import { updateLocalStorage } from "./updateStorage";
+import _, { remove } from "lodash";
 
 
 let buttonListeners = () => {
@@ -15,6 +16,11 @@ let buttonListeners = () => {
     const cancelTaskSubmit = document.querySelector(".cancelTaskSubmit");
     const cancelProjectSubmit = document.querySelector(".cancelProjectSubmit");
     const taskInputField = document.querySelector(".addTask");
+    const removeTaskButton = document.querySelector(".removeTask");
+    const highlightButton = document.querySelector(".highlight");
+    const cancelRemoveTaskButton = document.querySelector(".cancelTaskRemove");
+    const removeOrHighlightField = document.querySelector(".removeOrHighlightTask");
+
 
     submitTaskButton.addEventListener("click", (event) => {
        // console.log("button pressed");
@@ -53,8 +59,55 @@ let buttonListeners = () => {
         taskInputField.classList.remove("active");
     })
 
-
+    removeTaskButton.addEventListener("click",() => {
+        console.log("remove");
+        const tasksContainer = document.querySelector(".tasksContainer");
+        let selectedProject = removeTaskButton.classList[1];
+        let pText;
+        const allTasks = tasksContainer.querySelectorAll("p");
+        allTasks.forEach(p => {
+            if(p.classList.contains("remove/highlight")){
+                console.log(p);
+                pText = p.innerHTML; 
+            }     
+        })
+        _.remove(projects[selectedProject], function(task){
+            return task.task == pText;
+        })
+        updateLocalStorage();
+        checkDivDate(projects[selectedProject], tasksContainer);
+        removeOrHighlightField.classList.remove("active");
+        background.classList.remove("active");
+    })
+    highlightButton.addEventListener("click", () => {
+        const tasksContainer = document.querySelector(".tasksContainer");
+        const allTasks = tasksContainer.querySelectorAll("p");
+        allTasks.forEach(p => {
+            if(p.classList.contains("remove/highlight") && !p.classList.contains("highlighted")){
+                p.classList.add("highlighted");
+                p.classList.remove("remove/highlight"); 
+            } 
+            else{
+                p.classList.remove("highlighted");
+                p.classList.remove("remove/highlight");
+            } 
+            background.classList.remove("active");
+            removeOrHighlightField.classList.remove("active");   
+        })
+    })
+    cancelRemoveTaskButton.addEventListener("click", () => {
+        background.classList.remove("active");
+        removeOrHighlightField.classList.remove("active");  
+        const tasksContainer = document.querySelector(".tasksContainer");
+        const allTasks = tasksContainer.querySelectorAll("p");
+        allTasks.forEach(p => {
+            if(p.classList.contains("remove/highlight")){
+                p.classList.remove("remove/highlight");
+            } 
+                 
+    })
  
+})
 }
 
-export{buttonListeners};
+export {buttonListeners};

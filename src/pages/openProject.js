@@ -18,15 +18,43 @@ let openProject = (clickEvent) => {
   const openTaskInputButton = document.createElement("button");
   const deleteProjectButton = document.createElement("button");
 
+  const removeTaskButton = document.querySelector(".removeTask");
+  const highlightButton = document.querySelector(".highlight");
+  const cancelRemoveTaskButton = document.querySelector(".cancelTaskRemove");
+
   deleteProjectButton.classList.add("deleteProject");
   deleteProjectButton.classList.add(clickEvent.target.classList[0]);
   tasksContainer.classList.add("tasksContainer");
   openTaskInputButton.classList.add("openTaskInputButton");
+
   if(submitTaskButton.classList.length == 2)
   {
     submitTaskButton.classList.remove(submitTaskButton.classList[1]);
+    submitTaskButton.classList.add(clickEvent.target.classList[0]); 
   }
-  submitTaskButton.classList.add(clickEvent.target.classList[0]); 
+  else{submitTaskButton.classList.add(clickEvent.target.classList[0]); }
+
+  if(removeTaskButton.classList.length == 2)
+  {
+    removeTaskButton.classList.remove(removeTaskButton.classList[1]);
+    removeTaskButton.classList.add(clickEvent.target.classList[0]);
+  }
+  else{  removeTaskButton.classList.add(clickEvent.target.classList[0]);}
+
+  if(highlightButton.classList.length == 2)
+  {
+    highlightButton.classList.remove(highlightButton.classList[1]);
+    highlightButton.classList.add(clickEvent.target.classList[0]);
+  }
+  else{  highlightButton.classList.add(clickEvent.target.classList[0]);}
+
+  if(cancelRemoveTaskButton.classList.length == 2)
+  {
+    cancelRemoveTaskButton.classList.remove(cancelRemoveTaskButton.classList[1]);
+    cancelRemoveTaskButton.classList.add(clickEvent.target.classList[0]);
+  }
+  else{  cancelRemoveTaskButton.classList.add(clickEvent.target.classList[0]);}
+  
 
   openTaskInputButton.innerHTML = "Add a Task";
   projectName.innerHTML = clickEvent.target.innerHTML;
