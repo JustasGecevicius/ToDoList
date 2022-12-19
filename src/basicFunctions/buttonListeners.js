@@ -3,7 +3,7 @@ import { displayProjectsCorrect } from "./displayProjects";
 import { projects } from "../objects/projectsObject";
 import { Task } from "../objects/taskObjectConstructor";
 import { updateLocalStorage } from "./updateStorage";
-import _, { remove } from "lodash";
+import _ from "lodash";
 
 
 let buttonListeners = () => {
@@ -67,7 +67,7 @@ let buttonListeners = () => {
         const allTasks = tasksContainer.querySelectorAll("p");
         allTasks.forEach(p => {
             if(p.classList.contains("remove/highlight")){
-                console.log(p);
+                console.log(p, "zeba");
                 pText = p.innerHTML; 
             }     
         })
@@ -82,19 +82,39 @@ let buttonListeners = () => {
     highlightButton.addEventListener("click", () => {
         const tasksContainer = document.querySelector(".tasksContainer");
         const allTasks = tasksContainer.querySelectorAll("p");
+        const selectedProject = highlightButton.classList[1];
+        let pText;
+        let selectedElement;
         allTasks.forEach(p => {
             if(p.classList.contains("remove/highlight") && !p.classList.contains("highlighted")){
                 p.classList.add("highlighted");
+                pText = p.innerHTML;           
+                projects[selectedProject].forEach((task) => {
+                    if(task.task == pText){
+                        task.highlight = true;
+                    }
+                })
+                console.log(projects);
                 p.classList.remove("remove/highlight"); 
+                updateLocalStorage();
             } 
             else{
+                pText = p.innerHTML;           
+                projects[selectedProject].forEach((task) => {
+                    if(task.task == pText){
+                        task.highlight = false;
+                    }
+                })              
                 p.classList.remove("highlighted");
                 p.classList.remove("remove/highlight");
-            } 
+                updateLocalStorage();
+                }
+
+            }) 
             background.classList.remove("active");
             removeOrHighlightField.classList.remove("active");   
         })
-    })
+
     cancelRemoveTaskButton.addEventListener("click", () => {
         background.classList.remove("active");
         removeOrHighlightField.classList.remove("active");  

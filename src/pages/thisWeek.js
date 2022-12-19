@@ -18,10 +18,11 @@ let thisWeek = () => {
     
     const placementDiv = document.querySelector(".placementDiv");
     const h2 = document.createElement("h2");
-    const tasksHolderDiv = document.createElement("div");
+    const tasksContainer = document.createElement("div");
+    tasksContainer.classList.add("tasksContainer");
     h2.innerHTML = "This Weeks tasks";
-    placementDiv.append(h2, tasksHolderDiv);
-    checkDivDate(thisWeeksTasks, tasksHolderDiv);
+    placementDiv.append(h2, tasksContainer);
+    checkDivDate(thisWeeksTasks, tasksContainer);
 }
 
 export {thisWeek};

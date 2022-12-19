@@ -259,3 +259,15 @@ body{
 .highlighted{
     color: red;
 }
+
+@media screen and (max-width:500px) {
+    .mainDisplayWrapper{
+        flex-direction: column !important;
+        outline: solid red !important;
+    }
+    .navigation{
+        flex-direction: row !important;
+        width: 100vw;
+    }
+    
+}

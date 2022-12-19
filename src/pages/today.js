@@ -7,8 +7,9 @@ let today = () => {
     const placementDiv = document.querySelector(".placementDiv");
     const h2 = document.createElement("h2");
     h2.innerHTML = "Todays tasks";
-    const tasksDiv = document.createElement("div");
-    placementDiv.append(h2, tasksDiv);
+    const tasksContainer = document.createElement("div");
+    tasksContainer.classList.add("tasksContainer");
+    placementDiv.append(h2, tasksContainer);
     const date = new Date();
 
     let day = date.getDate();
@@ -29,6 +30,6 @@ let today = () => {
         }
     }
     //console.log(arrayOfTodaysTasks);
-    checkDivDate(arrayOfTodaysTasks, tasksDiv);
+    checkDivDate(arrayOfTodaysTasks, tasksContainer);
 }
 export {today};

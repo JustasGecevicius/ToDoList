@@ -25,6 +25,9 @@ let checkDivDate = (tasks, tasksContainer) => {
         const div = find(displayedTaskDivs, (o) => o.classList == task.date);
         if(div){
             const p = document.createElement("p");
+            if(task.highlight == true){
+                p.classList.add("highlighted");
+            }
             p.addEventListener("click", () => {
                 background.classList.add("active");
                 removeOrHighlightField.classList.add("active");
@@ -38,6 +41,9 @@ let checkDivDate = (tasks, tasksContainer) => {
            const div = document.createElement("div");
            const h4 = document.createElement("h4");
            const p = document.createElement("p");
+           if(task.highlight == true){
+            p.classList.add("highlighted");
+        }
            p.addEventListener("click", () => {
             background.classList.add("active");
             removeOrHighlightField.classList.add("active");

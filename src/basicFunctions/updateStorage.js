@@ -31,13 +31,13 @@ import { projects } from "../objects/projectsObject";
     if(localStorage["projects"] === undefined && Object.keys(projects).length == 0)
     {   
         localStorage["projects"] = JSON.stringify(projects);
-        console.log(localStorage, "create localStorage");
+        console.log( "create localStorage");
         return;
     }
 
     else if(Object.keys(localStorage["projects"]).length != 0 && Object.keys(projects).length == 0) 
     {
-        console.log("update Object", projects);
+        console.log("update Object");
         let projectsFromStorage = JSON.parse(localStorage["projects"]);
         console.log(projectsFromStorage);
         for (let project in projectsFromStorage){
@@ -50,7 +50,7 @@ import { projects } from "../objects/projectsObject";
 
     else if(localStorage["projects"] !== undefined &&  Object.keys(projects).length !== 0)
     {   
-        //console.log(localStorage, "update storage");
+        console.log("update storage");
         let newObject = {};
         for (let project in projects){
             newObject[project] = projects[project];            
